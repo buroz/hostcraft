@@ -1,0 +1,15 @@
+name: hostcraft
+version: 0.1.0
+
+authors:
+  - buroz <burakoz@zoho.com>
+
+targets:
+  hostcraft:
+    main: src/hostcraft.cr
+
+crystal: 0.34.0
+
+license: MIT
+
+dependencies:
