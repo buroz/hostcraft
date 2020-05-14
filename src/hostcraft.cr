@@ -1,6 +1,7 @@
 require "http/server"
 require "path"
 require "mime"
+require "option_parser"
 
 # TODO: Write documentation for `Hostcraft`
 module Hostcraft
@@ -47,7 +48,21 @@ module Hostcraft
     end
   end
 
-  server.bind_tcp "0.0.0.0", 80
-  puts "Hostcraft is up..."
-  server.listen
+  OptionParser.parse do |parser|
+    parser.banner = "Welcome to The Beatles App!"
+
+    parser.on "-v", "--version", "Show version" do
+      puts "version 1.0"
+      exit
+    end
+    parser.on "-h", "--help", "Show help" do
+      puts parser
+      exit
+    end
+    parser.on "-p", "--port", "Bind port" do
+      server.bind_tcp "0.0.0.0", 80
+      puts "Hostcraft is up..."
+      server.listen
+    end
+  end
 end
